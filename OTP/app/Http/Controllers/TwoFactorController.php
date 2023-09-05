@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mpdels\User;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 class TwoFactorController extends Controller
 {
     /**
@@ -34,8 +36,8 @@ class TwoFactorController extends Controller
      */
     public function store(Request $request)
     {
-        $user=auth()->user();
-        if($request->code== $user->code){
+        $user=Auth::user();
+        if($request->code == $user->code){
             $user->resetCode();
             return redirect()->route('dashboard');
         }
