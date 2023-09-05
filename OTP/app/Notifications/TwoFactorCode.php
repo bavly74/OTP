@@ -42,7 +42,7 @@ class TwoFactorCode extends Notification
     {
         return (new MailMessage)
                     ->line('The introduction to the notification.')
-                    ->line('your code is'.$notifiable->code)
+                    ->line('your code is '.$notifiable->code)
                     ->action('Notification Action', route('verify.index'))
                     ->line('Thank you for using our application!');
     }
